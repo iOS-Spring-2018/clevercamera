@@ -10,6 +10,7 @@ import UIKit
 // Check out AVFoundation for more features
 
 extension UIImage {
+    
     func resizeImage(newWidth: CGFloat) -> UIImage{
         let newHeight = newWidth * (self.size.height / self.size.width)
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight)) // start a new "canvas"
@@ -84,8 +85,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }else {
                 print("success!!")
                 if let data = data_ {
-                    let stringAnswer = String(data:data, encoding: .utf8)
-                    //print(stringAnswer)
+                 
                     DispatchQueue.main.async {
                         var responses:Responses?
                         do{
@@ -113,7 +113,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let image = info[UIImagePickerControllerEditedImage] as! UIImage
         let smallImage = image.resizeImage(newWidth: 200)
         theImage = smallImage
+        imageView.contentMode = .scaleToFill
         imageView.image = smallImage
+        //let frame = CGRect(x: imageView.frame.origin.x, y: imageView.frame.minY, width: (theImage?.size.width)!, height: (theImage?.size.height)!)
+        imageView.frame.size = CGSize(width: (theImage?.size.width)!, height: (theImage?.size.height)!)
         picker.dismiss(animated: true, completion: nil) // tell the imagePicker to un-present itself
     }
     
