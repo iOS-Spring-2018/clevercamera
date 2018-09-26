@@ -115,7 +115,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         theImage = smallImage
         imageView.contentMode = .scaleToFill
         imageView.image = smallImage
-        //let frame = CGRect(x: imageView.frame.origin.x, y: imageView.frame.minY, width: (theImage?.size.width)!, height: (theImage?.size.height)!)
         imageView.frame.size = CGSize(width: (theImage?.size.width)!, height: (theImage?.size.height)!)
         picker.dismiss(animated: true, completion: nil) // tell the imagePicker to un-present itself
     }
